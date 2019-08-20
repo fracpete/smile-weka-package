@@ -26,7 +26,6 @@ import smile.data.DateAttribute;
 import smile.data.NominalAttribute;
 import smile.data.NumericAttribute;
 import smile.data.StringAttribute;
-import weka.core.converters.ConverterUtils.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -171,15 +170,5 @@ public class DatasetUtils {
 	  "Unhandled attribute type (#" + (in.classIndex()+1) + "/" + in.classAttribute().name() + "): "
 	    + weka.core.Attribute.typeToString(in.classAttribute().type()));
     }
-  }
-
-  /**
-   * For testing only.
-   */
-  public static void main(String[] args) throws Exception {
-    Instances inst = DataSource.read("/home/fracpete/development/datasets/uci/nominal/iris.arff");
-    inst.setClassIndex(inst.numAttributes() - 1);
-    AttributeDataset data = convertInstances(inst);
-    System.out.println(data.range(45, 55));
   }
 }
