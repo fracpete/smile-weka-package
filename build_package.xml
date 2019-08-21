@@ -171,7 +171,7 @@
     </delete>
     <copy file="Description.props"
           todir="${dist}/${package}"/>
-    <copy file="Explorer.props"
+    <copy file=".GenericPropertiesCreator.props"
           todir="${dist}/${package}"/>
     <mkdir dir="${dist}/${package}/models"/>
     <copy todir="${dist}/${package}/models" >

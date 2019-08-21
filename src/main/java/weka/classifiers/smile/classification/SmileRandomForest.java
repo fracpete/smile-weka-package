@@ -18,7 +18,7 @@
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
-package weka.classifiers.trees;
+package weka.classifiers.smile.classification;
 
 import smile.classification.Classifier;
 import smile.classification.RandomForest;

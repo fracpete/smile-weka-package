@@ -3,17 +3,17 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
 
 ## Algorithms
 
-* Filters
+* Classification
 
-  * TODO
+  * [weka.classifiers.smile.classification.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/classification/RandomForest.html)
+  
+* Regression
+  
+  * [weka.classifiers.smile.regression.SmileRidgeRegression](https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html)
 
-* Classifiers
+* Clustering
 
-  * TODO
-
-* Regressors
-
-  * TODO
+  * [weka.clusterers.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
 
 
 ## Releases
