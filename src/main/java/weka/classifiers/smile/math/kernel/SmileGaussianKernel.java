@@ -96,7 +96,7 @@ public class SmileGaussianKernel
    * @return		the default
    */
   protected double getDefaultSigma() {
-    return 0.01;
+    return 1.0;
   }
 
   /**
