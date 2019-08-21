@@ -45,6 +45,14 @@ public abstract class AbstractSmileClassifier
   protected smile.classification.Classifier<double[]> m_Model;
 
   /**
+   * Resets the scheme.
+   */
+  protected void reset() {
+    m_Header = null;
+    m_Model  = null;
+  }
+
+  /**
    * Builds the classifier.
    *
    * @param data	the data to use for training
@@ -63,6 +71,7 @@ public abstract class AbstractSmileClassifier
   public void buildClassifier(Instances data) throws Exception {
     AttributeDataset	dataset;
 
+    reset();
     getCapabilities().testWithFail(data);
     dataset = DatasetUtils.convertInstances(data);
     m_Header = dataset.head(0);
