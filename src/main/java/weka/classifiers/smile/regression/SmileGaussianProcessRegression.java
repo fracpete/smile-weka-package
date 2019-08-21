@@ -62,14 +62,14 @@ public class SmileGaussianProcessRegression
    */
   @Override
   public String globalInfo() {
-    return "Ridge Regression. Coefficient estimates for multiple linear regression "
-      + "models rely on the independence of the model terms. When terms are "
-      + "correlated and the columns of the design matrix X have an approximate "
-      + "linear dependence, the matrix X'X becomes close to singular. As a result, "
-      + "the least-squares estimate becomes highly sensitive to random errors in "
-      + "the observed response Y, producing a large variance.\n\n"
+    return "Gaussian Process for Regression. A Gaussian process is a stochastic "
+      + "process whose realizations consist of random values associated with "
+      + "every point in a range of times (or of space) such that each such "
+      + "random variable has a normal distribution. Moreover, every finite "
+      + "collection of those random variables has a multivariate normal "
+      + "distribution.\n\n"
       + "See also:\n"
-      + "https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html";
+      + "https://haifengl.github.io/smile/api/java/smile/regression/GaussianProcessRegression.html";
   }
 
   /**
