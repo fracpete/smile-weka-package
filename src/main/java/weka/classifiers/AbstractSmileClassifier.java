@@ -23,7 +23,8 @@ package weka.classifiers;
 import smile.classification.SoftClassifier;
 import smile.data.AttributeDataset;
 import smile.data.NominalAttribute;
-import weka.core.DatasetUtils;
+import weka.core.SmileDatasetHeader;
+import weka.core.SmileDatasetUtils;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.Utils;
@@ -39,7 +40,7 @@ public abstract class AbstractSmileClassifier
   private static final long serialVersionUID = 8061087017316008521L;
 
   /** the dataset structure. */
-  protected AttributeDataset m_Header;
+  protected SmileDatasetHeader m_Header;
 
   /** the model. */
   protected smile.classification.Classifier<double[]> m_Model;
@@ -82,8 +83,8 @@ public abstract class AbstractSmileClassifier
     getCapabilities().testWithFail(data);
     data     = new Instances(data);
     data.deleteWithMissingClass();
-    dataset  = DatasetUtils.convertInstances(data);
-    m_Header = dataset.head(0);
+    dataset  = SmileDatasetUtils.convertInstances(data);
+    m_Header = new SmileDatasetHeader(dataset, data);
     m_Model  = buildClassifier(dataset);
   }
 
@@ -100,8 +101,8 @@ public abstract class AbstractSmileClassifier
     double[]	posterior;
 
     if (m_Model instanceof SoftClassifier) {
-      values    = DatasetUtils.convertInstance(instance, m_Header);
-      posterior = new double[((NominalAttribute) m_Header.responseAttribute()).size()];
+      values    = SmileDatasetUtils.convertInstance(instance, m_Header.getDataset());
+      posterior = new double[((NominalAttribute) m_Header.getDataset().responseAttribute()).size()];
       ((SoftClassifier<double[]>) m_Model).predict(values, posterior);
       return posterior;
     }
@@ -121,7 +122,7 @@ public abstract class AbstractSmileClassifier
   public double classifyInstance(Instance instance) throws Exception {
     double[]	values;
 
-    values = DatasetUtils.convertInstance(instance, m_Header);
+    values = SmileDatasetUtils.convertInstance(instance, m_Header.getDataset());
     return m_Model.predict(values);
   }
 

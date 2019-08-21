@@ -21,7 +21,8 @@
 package weka.classifiers;
 
 import smile.data.AttributeDataset;
-import weka.core.DatasetUtils;
+import weka.core.SmileDatasetHeader;
+import weka.core.SmileDatasetUtils;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.Utils;
@@ -37,7 +38,7 @@ public abstract class AbstractSmileRegressor
   private static final long serialVersionUID = 8061087017316008521L;
 
   /** the dataset structure. */
-  protected AttributeDataset m_Header;
+  protected SmileDatasetHeader m_Header;
 
   /** the model. */
   protected smile.regression.Regression<double[]> m_Model;
@@ -80,8 +81,8 @@ public abstract class AbstractSmileRegressor
     getCapabilities().testWithFail(data);
     data     = new Instances(data);
     data.deleteWithMissingClass();
-    dataset  = DatasetUtils.convertInstances(data);
-    m_Header = dataset.head(0);
+    dataset  = SmileDatasetUtils.convertInstances(data);
+    m_Header = new SmileDatasetHeader(dataset, data);
     m_Model  = buildClassifier(dataset);
   }
 
@@ -96,7 +97,7 @@ public abstract class AbstractSmileRegressor
   public double classifyInstance(Instance instance) throws Exception {
     double[]	values;
 
-    values = DatasetUtils.convertInstance(instance, m_Header);
+    values = SmileDatasetUtils.convertInstance(instance, m_Header.getDataset());
     return m_Model.predict(values);
   }
 

@@ -25,6 +25,12 @@ import smile.clustering.KMeans;
 import smile.data.AttributeDataset;
 import weka.core.Capabilities;
 import weka.core.Capabilities.Capability;
+import weka.core.WekaOptionUtils;
+
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Wraps the SMILE KMeans algorithm.
@@ -36,6 +42,20 @@ public class SmileKMeans
 
   private static final long serialVersionUID = -9151643463590262607L;
 
+  public static final String NUM_CLUSTERS = "num-clusters";
+
+  public static final String MAX_ITER = "max-iter";
+
+  public static final String RUNS = "runs";
+
+  /** the number of clusters. */
+  protected int m_NumClusters = getDefaultNumClusters();
+
+  /** the maximum number of iterations. */
+  protected int m_MaxIter = getDefaultMaxIter();
+
+  /** the number of runs. */
+  protected int m_Runs = getDefaultRuns();
   /**
    * Returns a description of the clusterer.
    *
@@ -49,6 +69,167 @@ public class SmileKMeans
       + "for arbitrary input is NP-hard, the standard approach to finding an "
       + "approximate solution (often called Lloyd's algorithm or the k-means "
       + "algorithm) is used widely and frequently finds reasonable solutions quickly. ";
+  }
+
+  /**
+   * Returns an enumeration describing the available options.
+   *
+   * @return an enumeration of all the available options.
+   */
+  @Override
+  public Enumeration listOptions() {
+    Vector result = new Vector();
+    WekaOptionUtils.addOption(result, numClustersTipText(), "" + getDefaultNumClusters(), NUM_CLUSTERS);
+    WekaOptionUtils.addOption(result, maxIterTipText(), "" + getDefaultMaxIter(), MAX_ITER);
+    WekaOptionUtils.addOption(result, runsTipText(), "" + getDefaultRuns(), RUNS);
+    WekaOptionUtils.add(result, super.listOptions());
+    return WekaOptionUtils.toEnumeration(result);
+  }
+
+  /**
+   * Parses a given list of options.
+   *
+   * @param options the list of options as an array of strings
+   * @throws Exception if an option is not supported
+   */
+  @Override
+  public void setOptions(String[] options) throws Exception {
+    setNumClusters(WekaOptionUtils.parse(options, NUM_CLUSTERS, getDefaultNumClusters()));
+    setMaxIter(WekaOptionUtils.parse(options, MAX_ITER, getDefaultMaxIter()));
+    setRuns(WekaOptionUtils.parse(options, RUNS, getDefaultRuns()));
+    super.setOptions(options);
+  }
+
+  /**
+   * Gets the current settings.
+   *
+   * @return an array of strings suitable for passing to setOptions
+   */
+  @Override
+  public String[] getOptions() {
+    List<String> result = new ArrayList<String>();
+    WekaOptionUtils.add(result, NUM_CLUSTERS, getNumClusters());
+    WekaOptionUtils.add(result, MAX_ITER, getMaxIter());
+    WekaOptionUtils.add(result, RUNS, getRuns());
+    WekaOptionUtils.add(result, super.getOptions());
+    return WekaOptionUtils.toArray(result);
+  }
+
+  /**
+   * The default number of clusters.
+   *
+   * @return		the default
+   */
+  protected int getDefaultNumClusters() {
+    return 2;
+  }
+
+  /**
+   * Sets the number of clusters to determine.
+   *
+   * @param value	the number (>= 2)
+   */
+  public void setNumClusters(int value) {
+    if (value >= 2) {
+      m_NumClusters = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the number of clusters to determine.
+   *
+   * @return		the number (>= 2)
+   */
+  public int getNumClusters() {
+    return m_NumClusters;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String numClustersTipText() {
+    return "The number of clusters to determine (>= 2).";
+  }
+  
+  /**
+   * The default maximum number of iterations.
+   *
+   * @return		the default
+   */
+  protected int getDefaultMaxIter() {
+    return 100;
+  }
+
+  /**
+   * Sets the maximum number of iterations in each run.
+   *
+   * @param value	the iterations
+   */
+  public void setMaxIter(int value) {
+    if (value >= 1) {
+      m_MaxIter = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the maximum number of iterations in each run.
+   *
+   * @return		the iterations
+   */
+  public int getMaxIter() {
+    return m_MaxIter;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String maxIterTipText() {
+    return "The maximum number of iterations in each run.";
+  }
+
+  /**
+   * The default number of runs.
+   *
+   * @return		the default
+   */
+  protected int getDefaultRuns() {
+    return 1;
+  }
+
+  /**
+   * Sets the number of runs to perform.
+   *
+   * @param value	the runs (>= 1)
+   */
+  public void setRuns(int value) {
+    if (value >= 1) {
+      m_Runs = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the number of runs to perform.
+   *
+   * @return		the runs (>= 1)
+   */
+  public int getRuns() {
+    return m_Runs;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String runsTipText() {
+    return "The number of runs (>= 1); if more than 1 then the best model is used.";
   }
 
   /**
@@ -78,7 +259,10 @@ public class SmileKMeans
    */
   @Override
   protected Clustering<double[]> buildClusterer(AttributeDataset data) throws Exception {
-    return new KMeans(data.x(), 3);
+    if (m_Runs <= 1)
+      return new KMeans(data.x(), m_NumClusters, m_MaxIter);
+    else
+      return new KMeans(data.x(), m_NumClusters, m_MaxIter, m_Runs);
   }
 
   /**

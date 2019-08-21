@@ -22,7 +22,8 @@ package weka.clusterers;
 
 import smile.clustering.PartitionClustering;
 import smile.data.AttributeDataset;
-import weka.core.DatasetUtils;
+import weka.core.SmileDatasetHeader;
+import weka.core.SmileDatasetUtils;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.Utils;
@@ -38,10 +39,10 @@ public abstract class AbstractSmileClusterer
   private static final long serialVersionUID = 8061087017316008521L;
 
   /** the dataset structure. */
-  protected AttributeDataset m_Header;
+  protected SmileDatasetHeader m_Header;
 
   /** the model. */
-  protected smile.clustering.Clustering<double[]> m_Model;
+  protected smile.clustering.Clustering<double[]> m_NumClusters;
 
   /**
    * Returns a description of the clusterer.
@@ -55,7 +56,7 @@ public abstract class AbstractSmileClusterer
    */
   protected void reset() {
     m_Header = null;
-    m_Model  = null;
+    m_NumClusters = null;
   }
 
   /**
@@ -79,9 +80,9 @@ public abstract class AbstractSmileClusterer
 
     reset();
     getCapabilities().testWithFail(data);
-    dataset = DatasetUtils.convertInstances(data);
-    m_Header = dataset.head(0);
-    m_Model  = buildClusterer(dataset);
+    dataset = SmileDatasetUtils.convertInstances(data);
+    m_Header = new SmileDatasetHeader(dataset, data);
+    m_NumClusters = buildClusterer(dataset);
   }
 
   /**
@@ -95,8 +96,8 @@ public abstract class AbstractSmileClusterer
   public int clusterInstance(Instance instance) throws Exception {
     double[]	values;
 
-    values = DatasetUtils.convertInstance(instance, m_Header);
-    return m_Model.predict(values);
+    values = SmileDatasetUtils.convertInstance(instance, m_Header.getDataset());
+    return m_NumClusters.predict(values);
   }
 
   /**
@@ -108,8 +109,8 @@ public abstract class AbstractSmileClusterer
    */
   @Override
   public int numberOfClusters() throws Exception {
-    if (m_Model instanceof PartitionClustering)
-      return ((PartitionClustering<double[]>) m_Model).getNumClusters();
+    if (m_NumClusters instanceof PartitionClustering)
+      return ((PartitionClustering<double[]>) m_NumClusters).getNumClusters();
     else
       throw new IllegalStateException("Retrieval of number of clusters is not supported!");
   }
@@ -121,9 +122,9 @@ public abstract class AbstractSmileClusterer
    */
   @Override
   public String toString() {
-    if (m_Model == null)
+    if (m_NumClusters == null)
       return Utils.toCommandLine(this) + "\n" + "No model built yet!\n";
     else
-      return Utils.toCommandLine(this) + "\n" + m_Model.getClass().getName() + "\n";
+      return Utils.toCommandLine(this) + "\n" + m_NumClusters.getClass().getName() + "\n";
   }
 }

@@ -21,7 +21,7 @@
 package weka.classifiers;
 
 import smile.classification.OnlineClassifier;
-import weka.core.DatasetUtils;
+import weka.core.SmileDatasetUtils;
 import weka.core.Instance;
 
 /**
@@ -47,7 +47,7 @@ public abstract class AbstractUpdateableSmileClassifier
     if (m_Model == null)
       throw new IllegalStateException("No model built yet, cannot update!");
     ((OnlineClassifier<double[]>) m_Model).learn(
-      DatasetUtils.convertInstance(instance, m_Header),
-      (int) DatasetUtils.convertClassValue(instance, m_Header));
+      SmileDatasetUtils.convertInstance(instance, m_Header.getDataset()),
+      (int) SmileDatasetUtils.convertClassValue(instance, m_Header.getDataset()));
   }
 }

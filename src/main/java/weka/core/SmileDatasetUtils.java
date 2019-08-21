@@ -14,7 +14,7 @@
  */
 
 /*
- * DatasetUtils.java
+ * SmileDatasetUtils.java
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
@@ -35,7 +35,7 @@ import java.util.List;
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public class DatasetUtils {
+public class SmileDatasetUtils {
 
   /**
    * Converts a Weka Instances to a SMILE Dataset.
