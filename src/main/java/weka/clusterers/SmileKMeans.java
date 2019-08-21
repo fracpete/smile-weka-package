@@ -68,7 +68,9 @@ public class SmileKMeans
       + "nearest mean. Although finding an exact solution to the k-means problem "
       + "for arbitrary input is NP-hard, the standard approach to finding an "
       + "approximate solution (often called Lloyd's algorithm or the k-means "
-      + "algorithm) is used widely and frequently finds reasonable solutions quickly. ";
+      + "algorithm) is used widely and frequently finds reasonable solutions quickly.\n\n"
+      + "See also:\n"
+      + "https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html";
   }
 
   /**

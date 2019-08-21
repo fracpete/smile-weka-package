@@ -60,7 +60,9 @@ public class SmileRidgeRegression
       + "correlated and the columns of the design matrix X have an approximate "
       + "linear dependence, the matrix X'X becomes close to singular. As a result, "
       + "the least-squares estimate becomes highly sensitive to random errors in "
-      + "the observed response Y, producing a large variance. ";
+      + "the observed response Y, producing a large variance.\n\n"
+      + "See also:\n"
+      + "https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html";
   }
 
   /**
