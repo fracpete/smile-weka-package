@@ -26,6 +26,12 @@ import smile.regression.RidgeRegression;
 import weka.classifiers.AbstractSmileRegressor;
 import weka.core.Capabilities;
 import weka.core.Capabilities.Capability;
+import weka.core.WekaOptionUtils;
+
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * SMILE RidgeRegression.
@@ -36,6 +42,11 @@ public class SmileRidgeRegression
   extends AbstractSmileRegressor {
 
   private static final long serialVersionUID = -8861088582494627633L;
+
+  public static final String LAMBDA = "lambda";
+
+  /** the shrinkage/regularization parameter. */
+  protected double m_Lambda = getDefaultLambda();
 
   /**
    * Returns a description of the classifier.
@@ -50,6 +61,83 @@ public class SmileRidgeRegression
       + "linear dependence, the matrix X'X becomes close to singular. As a result, "
       + "the least-squares estimate becomes highly sensitive to random errors in "
       + "the observed response Y, producing a large variance. ";
+  }
+
+  /**
+   * Returns an enumeration describing the available options.
+   *
+   * @return an enumeration of all the available options.
+   */
+  @Override
+  public Enumeration listOptions() {
+    Vector result = new Vector();
+    WekaOptionUtils.addOption(result, lambdaTipText(), "" + getDefaultLambda(), LAMBDA);
+    WekaOptionUtils.add(result, super.listOptions());
+    return WekaOptionUtils.toEnumeration(result);
+  }
+
+  /**
+   * Parses a given list of options.
+   *
+   * @param options the list of options as an array of strings
+   * @throws Exception if an option is not supported
+   */
+  @Override
+  public void setOptions(String[] options) throws Exception {
+    setLambda(WekaOptionUtils.parse(options, LAMBDA, getDefaultLambda()));
+    super.setOptions(options);
+  }
+
+  /**
+   * Gets the current settings.
+   *
+   * @return an array of strings suitable for passing to setOptions
+   */
+  @Override
+  public String[] getOptions() {
+    List<String> result = new ArrayList<String>();
+    WekaOptionUtils.add(result, LAMBDA, getLambda());
+    WekaOptionUtils.add(result, super.getOptions());
+    return WekaOptionUtils.toArray(result);
+  }
+
+  /**
+   * The default shrinkage/regularization.
+   *
+   * @return		the default
+   */
+  protected double getDefaultLambda() {
+    return 1.0e-8;
+  }
+
+  /**
+   * Sets the shrinkage/regularization.
+   *
+   * @param value	the lambda (>= 0)
+   */
+  public void setLambda(double value) {
+    if (value >= 0.0) {
+      m_Lambda = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the shrinkage/regularization.
+   *
+   * @return		the lambda (>= 0)
+   */
+  public double getLambda() {
+    return m_Lambda;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String lambdaTipText() {
+    return "The shrinkage/regularization factor (>= 0).";
   }
 
   /**
@@ -85,7 +173,7 @@ public class SmileRidgeRegression
    */
   @Override
   protected Regression<double[]> buildClassifier(AttributeDataset data) throws Exception {
-    return new RidgeRegression(data.x(), data.y(), 0.0001);
+    return new RidgeRegression(data.x(), data.y(), m_Lambda);
   }
 
   /**
