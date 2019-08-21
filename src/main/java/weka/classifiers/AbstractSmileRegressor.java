@@ -24,6 +24,7 @@ import smile.data.AttributeDataset;
 import weka.core.DatasetUtils;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.Utils;
 
 /**
  * Ancestor for SMILE regression algorithms.
@@ -89,8 +90,8 @@ public abstract class AbstractSmileRegressor
   @Override
   public String toString() {
     if (m_Model == null)
-      return "No model built yet!";
+      return Utils.toCommandLine(this) + "\n" + "No model built yet!";
     else
-      return m_Model.getClass().getName();
+      return Utils.toCommandLine(this) + "\n" + m_Model.getClass().getName();
   }
 }
