@@ -104,6 +104,19 @@
     </dependency>
 
     <dependency>
+      <groupId>com.github.fracpete</groupId>
+      <artifactId>weka-option-utils</artifactId>
+      <version>2016.6.9</version>
+      <type>jar</type>
+      <exclusions>
+        <exclusion>
+          <groupId>nz.ac.waikato.cms.weka</groupId>
+          <artifactId>weka-dev</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
       <groupId>com.github.haifengl</groupId>
       <artifactId>smile-core</artifactId>
       <version>1.5.3</version>
