@@ -12,6 +12,7 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
   * [weka.classifiers.smile.regression.SmileGaussianProcessRegression](https://haifengl.github.io/smile/api/java/smile/regression/GaussianProcessRegression.html)
   * [weka.classifiers.smile.regression.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/regression/RandomForest.html)
   * [weka.classifiers.smile.regression.SmileRidgeRegression](https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html)
+  * [weka.classifiers.smile.regression.SmileSVR](https://haifengl.github.io/smile/api/java/smile/regression/SVR.html)
 
 * Kernels
 
