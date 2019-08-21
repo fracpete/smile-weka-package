@@ -50,7 +50,6 @@ public class SmileKMeans
     // attributes
     result.enable(Capability.NOMINAL_ATTRIBUTES);
     result.enable(Capability.NUMERIC_ATTRIBUTES);
-    result.enable(Capability.MISSING_VALUES);
 
     return result;
   }
