@@ -21,11 +21,19 @@
 package weka.classifiers.smile.classification;
 
 import smile.classification.Classifier;
+import smile.classification.DecisionTree.SplitRule;
 import smile.classification.RandomForest;
 import smile.data.AttributeDataset;
+import smile.math.Math;
 import weka.classifiers.AbstractSmileClassifier;
 import weka.core.Capabilities;
 import weka.core.Capabilities.Capability;
+import weka.core.WekaOptionUtils;
+
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * SMILE RandomForest.
@@ -37,6 +45,36 @@ public class SmileRandomForest
 
   private static final long serialVersionUID = -6558986110434792292L;
 
+  public static final String NUM_TREES = "num-trees";
+
+  public static final String NUM_FEATURES = "num-features";
+
+  public static final String MAX_NODES = "max-nodes";
+
+  public static final String MIN_NODE_SIZE = "min-node-size";
+
+  public static final String SUB_SAMPLE = "sub-sample";
+
+  public static final String SPLIT_RULE = "split-rule";
+
+  /** the number of trees. */
+  protected int m_NumTrees = getDefaultNumTrees();
+
+  /** the number of features to split on. */
+  protected int m_NumFeatures = getDefaultNumFeatures();
+
+  /** the maximum number of leaf nodes. */
+  protected int m_MaxNodes = getDefaultMaxNodes();
+
+  /** the minimum node size. */
+  protected int m_MinNodeSize = getDefaultMinNodeSize();
+
+  /** the sub-sample size (0-1). */
+  protected double m_SubSample = getDefaultSubSample();
+
+  /** the split-rule. */
+  protected SplitRule m_SplitRule = getDefaultSplitRule();
+
   /**
    * Returns a description of the classifier.
    *
@@ -47,7 +85,294 @@ public class SmileRandomForest
     return "Random forest for classification. Random forest is an ensemble "
       + "classifier that consists of many decision trees and outputs the majority "
       + "vote of individual trees. The method combines bagging idea and the "
-      + "random selection of features. ";
+      + "random selection of features.\n\n"
+      + "See also:\n"
+      + "https://haifengl.github.io/smile/api/java/smile/classification/RandomForest.html";
+  }
+
+  /**
+   * Returns an enumeration describing the available options.
+   *
+   * @return an enumeration of all the available options.
+   */
+  @Override
+  public Enumeration listOptions() {
+    Vector result = new Vector();
+    WekaOptionUtils.addOption(result, numTreesTipText(), "" + getDefaultNumTrees(), NUM_TREES);
+    WekaOptionUtils.addOption(result, numFeaturesTipText(), "" + getDefaultNumFeatures(), NUM_FEATURES);
+    WekaOptionUtils.addOption(result, maxNodesTipText(), "" + getDefaultMaxNodes(), MAX_NODES);
+    WekaOptionUtils.addOption(result, minNodeSizeTipText(), "" + getDefaultMinNodeSize(), MIN_NODE_SIZE);
+    WekaOptionUtils.addOption(result, subSampleTipText(), "" + getDefaultSubSample(), SUB_SAMPLE);
+    WekaOptionUtils.addOption(result, splitRuleTipText(), "" + getDefaultSplitRule(), SPLIT_RULE);
+    WekaOptionUtils.add(result, super.listOptions());
+    return WekaOptionUtils.toEnumeration(result);
+  }
+
+  /**
+   * Parses a given list of options.
+   *
+   * @param options the list of options as an array of strings
+   * @throws Exception if an option is not supported
+   */
+  @Override
+  public void setOptions(String[] options) throws Exception {
+    setNumTrees(WekaOptionUtils.parse(options, NUM_TREES, getDefaultNumTrees()));
+    setNumFeatures(WekaOptionUtils.parse(options, NUM_FEATURES, getDefaultNumFeatures()));
+    setMaxNodes(WekaOptionUtils.parse(options, MAX_NODES, getDefaultMaxNodes()));
+    setMinNodeSize(WekaOptionUtils.parse(options, MIN_NODE_SIZE, getDefaultMinNodeSize()));
+    setSubSample(WekaOptionUtils.parse(options, SUB_SAMPLE, getDefaultSubSample()));
+    setSplitRule((SplitRule) WekaOptionUtils.parse(options, SPLIT_RULE, getDefaultSplitRule()));
+    super.setOptions(options);
+  }
+
+  /**
+   * Gets the current settings.
+   *
+   * @return an array of strings suitable for passing to setOptions
+   */
+  @Override
+  public String[] getOptions() {
+    List<String> result = new ArrayList<String>();
+    WekaOptionUtils.add(result, NUM_TREES, getNumTrees());
+    WekaOptionUtils.add(result, NUM_FEATURES, getNumFeatures());
+    WekaOptionUtils.add(result, MAX_NODES, getMaxNodes());
+    WekaOptionUtils.add(result, MIN_NODE_SIZE, getMinNodeSize());
+    WekaOptionUtils.add(result, SUB_SAMPLE, getSubSample());
+    WekaOptionUtils.add(result, SPLIT_RULE, getSplitRule());
+    WekaOptionUtils.add(result, super.getOptions());
+    return WekaOptionUtils.toArray(result);
+  }
+
+  /**
+   * The default number of trees.
+   *
+   * @return		the default
+   */
+  protected int getDefaultNumTrees() {
+    return 100;
+  }
+
+  /**
+   * Sets the number of trees to use.
+   *
+   * @param value	the trees (>= 1)
+   */
+  public void setNumTrees(int value) {
+    if (value >= 1) {
+      m_NumTrees = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the number of trees to use.
+   *
+   * @return		the trees (>= 1)
+   */
+  public int getNumTrees() {
+    return m_NumTrees;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String numTreesTipText() {
+    return "The number of trees to use (>= 1).";
+  }
+
+  /**
+   * The default number of features.
+   *
+   * @return		the default
+   */
+  protected int getDefaultNumFeatures() {
+    return -1;
+  }
+
+  /**
+   * Sets the number of features to use.
+   *
+   * @param value	the features (>= 1 or -1 for sqrt(#attributes))
+   */
+  public void setNumFeatures(int value) {
+    if ((value >= 1) || (value == -1)) {
+      m_NumFeatures = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the number of features to use.
+   *
+   * @return		the features (>= 1 or -1 for sqrt(#attributes))
+   */
+  public int getNumFeatures() {
+    return m_NumFeatures;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String numFeaturesTipText() {
+    return "The number of features to use (>= 1 or -1 for sqrt(#attributes)).";
+  }
+
+  /**
+   * The default maximum number of leaf nodes.
+   *
+   * @return		the default
+   */
+  protected int getDefaultMaxNodes() {
+    return 100;
+  }
+
+  /**
+   * Sets the maximum number of leaf nodes.
+   *
+   * @param value	the maximum (>= 2)
+   */
+  public void setMaxNodes(int value) {
+    if (value >= 2) {
+      m_MaxNodes = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the maximum number of leaf nodes.
+   *
+   * @return		the maximum (>= 2)
+   */
+  public int getMaxNodes() {
+    return m_MaxNodes;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String maxNodesTipText() {
+    return "The maximum number of leaf nodes (>= 2).";
+  }
+
+  /**
+   * The default minimum size of nodes.
+   *
+   * @return		the default
+   */
+  protected int getDefaultMinNodeSize() {
+    return 5;
+  }
+
+  /**
+   * Sets the minimum size for nodes.
+   *
+   * @param value	the size (>= 1)
+   */
+  public void setMinNodeSize(int value) {
+    if (value >= 1) {
+      m_MinNodeSize = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the minimum size for nodes.
+   *
+   * @return		the size (>= 1)
+   */
+  public int getMinNodeSize() {
+    return m_MinNodeSize;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String minNodeSizeTipText() {
+    return "The minimum node size (>= 1).";
+  }
+
+  /**
+   * The default sub sample size.
+   *
+   * @return		the default
+   */
+  protected double getDefaultSubSample() {
+    return 1.0;
+  }
+
+  /**
+   * Sets the sub sample size.
+   *
+   * @param value	the sample size (0 < x <= 1)
+   */
+  public void setSubSample(double value) {
+    if ((value > 0) && (value <= 1)) {
+      m_SubSample = value;
+      reset();
+    }
+  }
+
+  /**
+   * Returns the sub sample size.
+   *
+   * @return		the sample size (0 < x <= 1)
+   */
+  public double getSubSample() {
+    return m_SubSample;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String subSampleTipText() {
+    return "The sub-sample size to use (0 < x <= 1).";
+  }
+
+  /**
+   * The default split rule.
+   *
+   * @return		the default
+   */
+  protected SplitRule getDefaultSplitRule() {
+    return SplitRule.GINI;
+  }
+
+  /**
+   * Sets the split rule to use.
+   *
+   * @param value	the rule
+   */
+  public void setSplitRule(SplitRule value) {
+    m_SplitRule = value;
+    reset();
+  }
+
+  /**
+   * Returns the split rule to use.
+   *
+   * @return		the rule
+   */
+  public SplitRule getSplitRule() {
+    return m_SplitRule;
+  }
+
+  /**
+   * Returns the help string.
+   *
+   * @return		the help string
+   */
+  public String splitRuleTipText() {
+    return "The split rule to use.";
   }
 
   /**
@@ -82,7 +407,15 @@ public class SmileRandomForest
    */
   @Override
   protected Classifier<double[]> buildClassifier(AttributeDataset data) throws Exception {
-    return new RandomForest(data, 100);
+    return new RandomForest(
+      data,
+      m_NumTrees,
+      m_MaxNodes,
+      m_MinNodeSize,
+      m_NumFeatures == -1 ? (int) Math.floor(Math.sqrt(data.attributes().length)) : m_NumFeatures,
+      m_SubSample,
+      m_SplitRule,
+      null);
   }
 
   /**
