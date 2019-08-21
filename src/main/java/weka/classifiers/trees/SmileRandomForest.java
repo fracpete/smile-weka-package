@@ -42,6 +42,7 @@ public class SmileRandomForest
    *
    * @return the description
    */
+  @Override
   public String globalInfo() {
     return "Random forest for classification. Random forest is an ensemble "
       + "classifier that consists of many decision trees and outputs the majority "

@@ -45,6 +45,13 @@ public abstract class AbstractSmileClassifier
   protected smile.classification.Classifier<double[]> m_Model;
 
   /**
+   * Returns a description of the classifier.
+   *
+   * @return the description
+   */
+  public abstract String globalInfo();
+
+  /**
    * Resets the scheme.
    */
   protected void reset() {

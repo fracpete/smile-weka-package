@@ -42,6 +42,7 @@ public class SmileRidgeRegression
    *
    * @return the description
    */
+  @Override
   public String globalInfo() {
     return "Ridge Regression. Coefficient estimates for multiple linear regression "
       + "models rely on the independence of the model terms. When terms are "

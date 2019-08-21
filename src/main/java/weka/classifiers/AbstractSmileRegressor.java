@@ -43,6 +43,13 @@ public abstract class AbstractSmileRegressor
   protected smile.regression.Regression<double[]> m_Model;
 
   /**
+   * Returns a description of the regressor.
+   *
+   * @return the description
+   */
+  public abstract String globalInfo();
+
+  /**
    * Resets the scheme.
    */
   protected void reset() {

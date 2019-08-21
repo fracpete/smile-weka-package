@@ -37,6 +37,21 @@ public class SmileKMeans
   private static final long serialVersionUID = -9151643463590262607L;
 
   /**
+   * Returns a description of the clusterer.
+   *
+   * @return the description
+   */
+  @Override
+  public String globalInfo() {
+    return "K-Means clustering. The algorithm partitions n observations into "
+      + "k clusters in which each observation belongs to the cluster with the "
+      + "nearest mean. Although finding an exact solution to the k-means problem "
+      + "for arbitrary input is NP-hard, the standard approach to finding an "
+      + "approximate solution (often called Lloyd's algorithm or the k-means "
+      + "algorithm) is used widely and frequently finds reasonable solutions quickly. ";
+  }
+
+  /**
    * Returns default capabilities of the clusterer.
    *
    * @return the capabilities of this clusterer

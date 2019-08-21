@@ -44,6 +44,13 @@ public abstract class AbstractSmileClusterer
   protected smile.clustering.Clustering<double[]> m_Model;
 
   /**
+   * Returns a description of the clusterer.
+   *
+   * @return the description
+   */
+  public abstract String globalInfo();
+
+  /**
    * Resets the scheme.
    */
   protected void reset() {
