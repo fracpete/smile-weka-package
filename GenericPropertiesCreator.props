@@ -1,8 +1,11 @@
 # Customises the list of options given by the GenericObjectEditor
 # for various superclasses.
 
-# Lists the Classifiers
+# the classifiers
 weka.classifiers.Classifier=\
  weka.classifiers.smile.classification,\
  weka.classifiers.smile.regression
 
+# the kernels
+weka.classifiers.smile.math.kernel.AbstractSmileKernel=\
+  weka.classifiers.smile.math.kernel
