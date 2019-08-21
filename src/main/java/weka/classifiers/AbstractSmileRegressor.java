@@ -71,7 +71,9 @@ public abstract class AbstractSmileRegressor
 
     reset();
     getCapabilities().testWithFail(data);
-    dataset = DatasetUtils.convertInstances(data);
+    data     = new Instances(data);
+    data.deleteWithMissingClass();
+    dataset  = DatasetUtils.convertInstances(data);
     m_Header = dataset.head(0);
     m_Model  = buildClassifier(dataset);
   }
