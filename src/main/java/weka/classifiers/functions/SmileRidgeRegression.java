@@ -24,6 +24,8 @@ import smile.data.AttributeDataset;
 import smile.regression.Regression;
 import smile.regression.RidgeRegression;
 import weka.classifiers.AbstractSmileRegressor;
+import weka.core.Capabilities;
+import weka.core.Capabilities.Capability;
 
 /**
  * SMILE RidgeRegression.
@@ -47,6 +49,30 @@ public class SmileRidgeRegression
       + "linear dependence, the matrix X'X becomes close to singular. As a result, "
       + "the least-squares estimate becomes highly sensitive to random errors in "
       + "the observed response Y, producing a large variance. ";
+  }
+
+  /**
+   * Returns default capabilities of the classifier.
+   *
+   * @return the capabilities of this classifier
+   */
+  @Override
+  public Capabilities getCapabilities() {
+    Capabilities result = super.getCapabilities();
+    result.disableAll();
+
+    // attributes
+    result.enable(Capability.NOMINAL_ATTRIBUTES);
+    result.enable(Capability.NUMERIC_ATTRIBUTES);
+    result.enable(Capability.DATE_ATTRIBUTES);
+    result.enable(Capability.MISSING_VALUES);
+
+    // class
+    result.enable(Capability.NUMERIC_CLASS);
+    result.enable(Capability.DATE_CLASS);
+    result.enable(Capability.MISSING_CLASS_VALUES);
+
+    return result;
   }
 
   /**

@@ -24,6 +24,8 @@ import smile.classification.Classifier;
 import smile.classification.RandomForest;
 import smile.data.AttributeDataset;
 import weka.classifiers.AbstractSmileClassifier;
+import weka.core.Capabilities;
+import weka.core.Capabilities.Capability;
 
 /**
  * SMILE RandomForest.
@@ -45,6 +47,29 @@ public class SmileRandomForest
       + "classifier that consists of many decision trees and outputs the majority "
       + "vote of individual trees. The method combines bagging idea and the "
       + "random selection of features. ";
+  }
+
+  /**
+   * Returns default capabilities of the classifier.
+   *
+   * @return the capabilities of this classifier
+   */
+  @Override
+  public Capabilities getCapabilities() {
+    Capabilities result = super.getCapabilities();
+    result.disableAll();
+
+    // attributes
+    result.enable(Capability.NOMINAL_ATTRIBUTES);
+    result.enable(Capability.NUMERIC_ATTRIBUTES);
+    result.enable(Capability.DATE_ATTRIBUTES);
+    result.enable(Capability.MISSING_VALUES);
+
+    // class
+    result.enable(Capability.NOMINAL_CLASS);
+    result.enable(Capability.MISSING_CLASS_VALUES);
+
+    return result;
   }
 
   /**
