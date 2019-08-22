@@ -27,7 +27,7 @@
       "type": "int",
       "default": "2",
       "constraint": "value >= 1",
-      "help": "The branching factor, maximum number of children nodes.."
+      "help": "The branching factor, maximum number of children nodes."
     },
     {
       "property": "maxRadius",
