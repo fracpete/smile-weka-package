@@ -9,3 +9,7 @@ weka.classifiers.Classifier=\
 # the kernels
 weka.classifiers.smile.math.kernel.AbstractSmileKernel=\
   weka.classifiers.smile.math.kernel
+
+# the clusterers
+weka.clusterers.Clusterer=\
+  weka.clusterers.smile

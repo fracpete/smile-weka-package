@@ -14,14 +14,14 @@
  */
 
 /*
- * AbstractSmileClusterer.java
+ * AbstractSmileRegressor.java
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
-package weka.clusterers;
+package weka.classifiers.smile;
 
-import smile.clustering.PartitionClustering;
 import smile.data.AttributeDataset;
+import weka.classifiers.AbstractClassifier;
 import weka.core.SmileDatasetHeader;
 import weka.core.SmileDatasetUtils;
 import weka.core.Instance;
@@ -29,12 +29,12 @@ import weka.core.Instances;
 import weka.core.Utils;
 
 /**
- * Ancestor for SMILE clustering algorithms.
+ * Ancestor for SMILE regression algorithms.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public abstract class AbstractSmileClusterer
-  extends AbstractClusterer {
+public abstract class AbstractSmileRegressor
+  extends AbstractClassifier {
 
   private static final long serialVersionUID = 8061087017316008521L;
 
@@ -42,10 +42,10 @@ public abstract class AbstractSmileClusterer
   protected SmileDatasetHeader m_Header;
 
   /** the model. */
-  protected smile.clustering.Clustering<double[]> m_NumClusters;
+  protected smile.regression.Regression<double[]> m_Model;
 
   /**
-   * Returns a description of the clusterer.
+   * Returns a description of the regressor.
    *
    * @return the description
    */
@@ -56,33 +56,35 @@ public abstract class AbstractSmileClusterer
    */
   protected void reset() {
     m_Header = null;
-    m_NumClusters = null;
+    m_Model  = null;
   }
 
   /**
-   * Builds the clusterer.
+   * Builds the classifier.
    *
    * @param data	the data to use for training
    * @return 		the generated model
    * @throws Exception	if training fails or data does not match capabilities
    */
-  protected abstract smile.clustering.Clustering<double[]> buildClusterer(AttributeDataset data) throws Exception;
+  protected abstract smile.regression.Regression<double[]> buildClassifier(AttributeDataset data) throws Exception;
 
   /**
-   * Builds the clusterer.
+   * Builds the classifier.
    *
    * @param data	the data to use for training
    * @throws Exception	if training fails or data does not match capabilities
    */
   @Override
-  public void buildClusterer(Instances data) throws Exception {
+  public void buildClassifier(Instances data) throws Exception {
     AttributeDataset	dataset;
 
     reset();
     getCapabilities().testWithFail(data);
-    dataset = SmileDatasetUtils.convertInstances(data);
+    data     = new Instances(data);
+    data.deleteWithMissingClass();
+    dataset  = SmileDatasetUtils.convertInstances(data);
     m_Header = new SmileDatasetHeader(dataset, data);
-    m_NumClusters = buildClusterer(dataset);
+    m_Model  = buildClassifier(dataset);
   }
 
   /**
@@ -93,26 +95,11 @@ public abstract class AbstractSmileClusterer
    * @throws Exception	if classification fails
    */
   @Override
-  public int clusterInstance(Instance instance) throws Exception {
+  public double classifyInstance(Instance instance) throws Exception {
     double[]	values;
 
     values = SmileDatasetUtils.convertInstance(instance, m_Header.getDataset());
-    return m_NumClusters.predict(values);
-  }
-
-  /**
-   * Returns the number of clusters.
-   *
-   * @return the number of clusters generated for a training dataset.
-   * @throws Exception if number of clusters could not be returned
-   *              successfully
-   */
-  @Override
-  public int numberOfClusters() throws Exception {
-    if (m_NumClusters instanceof PartitionClustering)
-      return ((PartitionClustering<double[]>) m_NumClusters).getNumClusters();
-    else
-      throw new IllegalStateException("Retrieval of number of clusters is not supported!");
+    return m_Model.predict(values);
   }
 
   /**
@@ -122,9 +109,9 @@ public abstract class AbstractSmileClusterer
    */
   @Override
   public String toString() {
-    if (m_NumClusters == null)
-      return Utils.toCommandLine(this) + "\n" + "No model built yet!\n";
+    if (m_Model == null)
+      return Utils.toCommandLine(this) + "\n" + "No model built yet!";
     else
-      return Utils.toCommandLine(this) + "\n" + m_NumClusters.getClass().getName() + "\n";
+      return Utils.toCommandLine(this) + "\n" + m_Model.getClass().getName();
   }
 }

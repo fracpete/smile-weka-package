@@ -1,0 +1,24 @@
+{
+  "name": "SmilePearsonKernel",
+  "package": "weka.classifiers.smile.math.kernel",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "weka.classifiers.smile.math.kernel.AbstractSmileKernel<smile.math.kernel.PearsonKernel>",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "omega",
+      "type": "double",
+      "default": "1.0",
+      "help": "the sigma value."
+    },
+    {
+      "property": "sigma",
+      "type": "double",
+      "default": "1.0",
+      "help": "the sigma value."
+    }
+  ]
+}

@@ -18,6 +18,13 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
 * Kernels
 
   * [weka.classifiers.smile.math.kernel.SmileGaussianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/GaussianKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmileHellingerKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/HellingerKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmileHyperbolicTangentKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/HyperbolicTangentKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmileLaplacianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/LaplacianKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmileLinearKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/LinearKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmilePearsonKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PearsonKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmilePolynomialKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PolynomialKernel.html)
+  * [weka.classifiers.smile.math.kernel.SmileThinPlateSplineKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/ThinPlateSplineKernel.html)
 
 * Clustering
 

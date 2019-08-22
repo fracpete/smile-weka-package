@@ -18,11 +18,12 @@
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
-package weka.classifiers;
+package weka.classifiers.smile;
 
 import smile.classification.SoftClassifier;
 import smile.data.AttributeDataset;
 import smile.data.NominalAttribute;
+import weka.classifiers.AbstractClassifier;
 import weka.core.SmileDatasetHeader;
 import weka.core.SmileDatasetUtils;
 import weka.core.Instance;

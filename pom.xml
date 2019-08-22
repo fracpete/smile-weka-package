@@ -106,7 +106,7 @@
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>weka-option-utils</artifactId>
-      <version>2016.8.22</version>
+      <version>2019.8.25</version>
       <type>jar</type>
       <exclusions>
         <exclusion>
@@ -306,6 +306,46 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+
+      <!-- for generating the base classes: mvn exec:java -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>weka.core.GenerateOptionHandler</mainClass>
+          <workingDirectory>.</workingDirectory>
+          <arguments>
+            <argument>--add-package-structure</argument>
+            <argument>--generate-dirs</argument>
+            <argument>--output-dir</argument>
+            <argument>${project.basedir}/src/main/java</argument>
+            <argument>--configuration</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.classification.SmileRandomForest.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.classification.SmileSVM.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileGaussianKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileHellingerKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileHyperbolicTangentKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileLaplacianKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileLinearKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmilePearsonKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmilePolynomialKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileThinPlateSplineKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileGaussianProcessRegression.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileRandomForest.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileRidgeRegression.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileSVR.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.clusterers.smile.SmileKMeans.json</argument>
+          </arguments>
+        </configuration>
       </plugin>
     </plugins>
   </build>

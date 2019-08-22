@@ -18,9 +18,10 @@
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
-package weka.classifiers;
+package weka.classifiers.smile;
 
 import smile.regression.OnlineRegression;
+import weka.classifiers.UpdateableClassifier;
 import weka.core.SmileDatasetUtils;
 import weka.core.Instance;
 

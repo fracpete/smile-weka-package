@@ -14,21 +14,21 @@
  */
 
 /*
- * SmileGaussianKernel.java
+ * SmileHellingerKernel.java
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
 package weka.classifiers.smile.math.kernel;
 
-import smile.math.kernel.GaussianKernel;
+import smile.math.kernel.HellingerKernel;
 
 /**
- * SMILE GaussianKernel.
+ * SMILE HellingerKernel.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public class SmileGaussianKernel
-  extends SmileGaussianKernelBase {
+public class SmileHellingerKernel
+  extends SmileHellingerKernelBase {
 
   private static final long serialVersionUID = 2662812690103741242L;
 
@@ -38,7 +38,7 @@ public class SmileGaussianKernel
    * @return the description
    */
   public String globalInfo() {
-    return "The Gaussian Mercer Kernel.";
+    return "The Hellinger Mercer Kernel.";
   }
 
   /**
@@ -47,7 +47,7 @@ public class SmileGaussianKernel
    * @return		the kernel
    */
   @Override
-  public GaussianKernel getKernel() {
-    return new GaussianKernel(m_Sigma);
+  public HellingerKernel getKernel() {
+    return new HellingerKernel();
   }
 }

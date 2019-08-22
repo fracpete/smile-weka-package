@@ -1,0 +1,26 @@
+{
+  "name": "SmileX",
+  "package": "weka.classifiers.smile.classification",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "weka.classifiers.smile.AbstractSmileClassifier",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "",
+      "type": "",
+      "flag": "",
+      "default": "",
+      "help": ""
+    },
+    {
+      "property": "",
+      "type": "",
+      "flag": "",
+      "default": "",
+      "help": ""
+    }
+  ]
+}

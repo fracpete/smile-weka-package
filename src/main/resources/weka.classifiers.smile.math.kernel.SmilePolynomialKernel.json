@@ -1,0 +1,32 @@
+{
+  "name": "SmilePolynomialKernel",
+  "package": "weka.classifiers.smile.math.kernel",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "weka.classifiers.smile.math.kernel.AbstractSmileKernel<smile.math.kernel.PolynomialKernel>",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "degree",
+      "type": "int",
+      "default": "2",
+      "constraint": "value > 0",
+      "help": "the polynomial degree."
+    },
+    {
+      "property": "scale",
+      "type": "double",
+      "default": "1.0",
+      "constraint": "value >= 0.0",
+      "help": "the scale."
+    },
+    {
+      "property": "offset",
+      "type": "double",
+      "default": "0.0",
+      "help": "the offset value."
+    }
+  ]
+}

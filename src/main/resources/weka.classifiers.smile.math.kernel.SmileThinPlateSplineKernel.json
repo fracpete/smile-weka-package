@@ -1,0 +1,19 @@
+{
+  "name": "SmileThinPlateSplineKernel",
+  "package": "weka.classifiers.smile.math.kernel",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "weka.classifiers.smile.math.kernel.AbstractSmileKernel<smile.math.kernel.ThinPlateSplineKernel>",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "sigma",
+      "type": "double",
+      "default": "1.0",
+      "constraint": "value >= 0.0",
+      "help": "the sigma value."
+    }
+  ]
+}
