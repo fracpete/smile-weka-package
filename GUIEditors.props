@@ -9,4 +9,4 @@
 #
 # author:  FracPete (fracpete at waikato dot ac dot nz)
 
-weka.classifiers.smile.math.kernel.AbstractSmileKernel=weka.gui.GenericObjectEditor
+smile.math.kernel.AbstractSmileKernel=weka.gui.GenericObjectEditor

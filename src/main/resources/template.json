@@ -1,9 +1,9 @@
 {
   "name": "SmileX",
-  "package": "weka.classifiers.smile.classification",
+  "package": "smile.classification",
   "prefix": "",
   "suffix": "Base",
-  "superclass": "weka.classifiers.smile.AbstractSmileClassifier",
+  "superclass": "smile.classification.AbstractSmileClassifier",
   "implement": [],
   "author": "FracPete",
   "organization": "University of Waikato, Hamilton, NZ",

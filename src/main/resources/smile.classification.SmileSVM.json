@@ -1,0 +1,38 @@
+{
+  "name": "SmileSVM",
+  "package": "smile.classification",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.classification.AbstractSmileClassifier",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "kernel",
+      "type": "smile.math.kernel.AbstractSmileKernel",
+      "default": "new smile.math.kernel.SmileGaussianKernel()",
+      "help": "The kernel to use."
+    },
+    {
+      "property": "capacity",
+      "type": "double",
+      "constraint": "value >= 0.0",
+      "default": "1.0",
+      "help": "The capacity parameter."
+    },
+    {
+      "property": "tolerance",
+      "type": "double",
+      "constraint": "value > 0.0",
+      "default": "0.001",
+      "help": "The convergence tolerance."
+    },
+    {
+      "property": "multiClassStrategy",
+      "type": "smile.classification.SVM.Multiclass",
+      "default": "smile.classification.SVM.Multiclass.ONE_VS_ALL",
+      "help": "The strategy to use in case of non-binary class attribute."
+    }
+  ]
+}

@@ -329,22 +329,22 @@
             <argument>--output-dir</argument>
             <argument>${project.basedir}/src/main/java</argument>
             <argument>--configuration</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.classification.SmileRandomForest.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.classification.SmileSVM.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileGaussianKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileHellingerKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileHyperbolicTangentKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileLaplacianKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileLinearKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmilePearsonKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmilePolynomialKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.math.kernel.SmileThinPlateSplineKernel.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileGaussianProcessRegression.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileRandomForest.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileRidgeRegression.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileSVR.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.clusterers.smile.SmileKMeans.json</argument>
-            <argument>${project.basedir}/src/main/resources/weka.clusterers.smile.SmileBIRCH.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.classification.SmileRandomForest.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.classification.SmileSVM.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmileGaussianKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmileHellingerKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmileHyperbolicTangentKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmileLaplacianKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmileLinearKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmilePearsonKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmilePolynomialKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.math.kernel.SmileThinPlateSplineKernel.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.regression.SmileGaussianProcessRegression.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.regression.SmileRandomForest.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.regression.SmileRidgeRegression.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.regression.SmileSVR.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.clustering.SmileKMeans.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.clustering.SmileBIRCH.json</argument>
           </arguments>
         </configuration>
       </plugin>

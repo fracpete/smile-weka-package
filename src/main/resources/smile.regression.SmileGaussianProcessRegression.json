@@ -1,0 +1,25 @@
+{
+  "name": "SmileGaussianProcessRegression",
+  "package": "smile.regression",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.regression.AbstractSmileRegressor",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "kernel",
+      "type": "smile.math.kernel.AbstractSmileKernel",
+      "default": "new smile.math.kernel.SmileGaussianKernel()",
+      "help": "The kernel to use."
+    },
+    {
+      "property": "lambda",
+      "type": "double",
+      "constraint": "value >= 0.0",
+      "default": "0.01",
+      "help": "The shrinkage/regularization factor."
+    }
+  ]
+}

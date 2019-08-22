@@ -1,0 +1,53 @@
+{
+  "name": "SmileRandomForest",
+  "package": "smile.classification",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.classification.AbstractSmileClassifier",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "numTrees",
+      "type": "int",
+      "default": "100",
+      "constraint": "value >= 1",
+      "help": "the number of trees to use."
+    },
+    {
+      "property": "numFeatures",
+      "type": "int",
+      "default": "-1",
+      "constraint": "(value >= 1) || (value == -1)",
+      "help": "the number of features to use; use -1 for sqrt(#attributes)."
+    },
+    {
+      "property": "maxNodes",
+      "type": "int",
+      "default": "100",
+      "constraint": "value >= 2",
+      "help": "the maximum number of leaf nodes."
+    },
+    {
+      "property": "minNodeSize",
+      "type": "int",
+      "default": "5",
+      "constraint": "value >= 1",
+      "help": "The minimum node size."
+    },
+    {
+      "property": "subSample",
+      "type": "double",
+      "default": "1.0",
+      "constraint": "(value > 0) && (value <= 1)",
+      "help": "the sub-sample size to use."
+    },
+    {
+      "property": "splitRule",
+      "type": "smile.classification.DecisionTree.SplitRule",
+      "default": "smile.classification.DecisionTree.SplitRule.GINI",
+      "help": "the split rule to use."
+    }
+  ]
+}

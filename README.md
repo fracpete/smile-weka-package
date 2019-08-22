@@ -5,31 +5,31 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
 
 * Classification
 
-  * [weka.classifiers.smile.classification.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/classification/RandomForest.html)
-  * [weka.classifiers.smile.classification.SmileSVM](https://haifengl.github.io/smile/api/java/smile/classification/SVM.html)
+  * [smile.classification.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/classification/RandomForest.html)
+  * [smile.classification.SmileSVM](https://haifengl.github.io/smile/api/java/smile/classification/SVM.html)
   
 * Regression
   
-  * [weka.classifiers.smile.regression.SmileGaussianProcessRegression](https://haifengl.github.io/smile/api/java/smile/regression/GaussianProcessRegression.html)
-  * [weka.classifiers.smile.regression.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/regression/RandomForest.html)
-  * [weka.classifiers.smile.regression.SmileRidgeRegression](https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html)
-  * [weka.classifiers.smile.regression.SmileSVR](https://haifengl.github.io/smile/api/java/smile/regression/SVR.html)
+  * [smile.regression.SmileGaussianProcessRegression](https://haifengl.github.io/smile/api/java/smile/regression/GaussianProcessRegression.html)
+  * [smile.regression.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/regression/RandomForest.html)
+  * [smile.regression.SmileRidgeRegression](https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html)
+  * [smile.regression.SmileSVR](https://haifengl.github.io/smile/api/java/smile/regression/SVR.html)
 
 * Kernels
 
-  * [weka.classifiers.smile.math.kernel.SmileGaussianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/GaussianKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmileHellingerKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/HellingerKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmileHyperbolicTangentKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/HyperbolicTangentKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmileLaplacianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/LaplacianKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmileLinearKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/LinearKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmilePearsonKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PearsonKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmilePolynomialKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PolynomialKernel.html)
-  * [weka.classifiers.smile.math.kernel.SmileThinPlateSplineKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/ThinPlateSplineKernel.html)
+  * [smile.math.kernel.SmileGaussianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/GaussianKernel.html)
+  * [smile.math.kernel.SmileHellingerKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/HellingerKernel.html)
+  * [smile.math.kernel.SmileHyperbolicTangentKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/HyperbolicTangentKernel.html)
+  * [smile.math.kernel.SmileLaplacianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/LaplacianKernel.html)
+  * [smile.math.kernel.SmileLinearKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/LinearKernel.html)
+  * [smile.math.kernel.SmilePearsonKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PearsonKernel.html)
+  * [smile.math.kernel.SmilePolynomialKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PolynomialKernel.html)
+  * [smile.math.kernel.SmileThinPlateSplineKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/ThinPlateSplineKernel.html)
 
 * Clustering
 
-  * [weka.clusterers.smile.SmileBIRCH](https://haifengl.github.io/smile/api/java/smile/clustering/BIRCH.html)
-  * [weka.clusterers.smile.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
+  * [smile.clustering.SmileBIRCH](https://haifengl.github.io/smile/api/java/smile/clustering/BIRCH.html)
+  * [smile.clustering.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
 
 
 ## Releases

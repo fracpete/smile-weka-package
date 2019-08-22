@@ -1,0 +1,24 @@
+{
+  "name": "SmileHyperbolicTangentKernel",
+  "package": "smile.math.kernel",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.math.kernel.AbstractSmileKernel<smile.math.kernel.HyperbolicTangentKernel>",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "scale",
+      "type": "double",
+      "default": "1.0",
+      "help": "the scale."
+    },
+    {
+      "property": "offset",
+      "type": "double",
+      "default": "0.0",
+      "help": "the offset."
+    }
+  ]
+}

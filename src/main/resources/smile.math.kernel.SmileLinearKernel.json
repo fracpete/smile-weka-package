@@ -1,0 +1,10 @@
+{
+  "name": "SmileLinearKernel",
+  "package": "smile.math.kernel",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.math.kernel.AbstractSmileKernel<smile.math.kernel.LinearKernel>",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ"
+}

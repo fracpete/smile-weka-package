@@ -1,0 +1,10 @@
+{
+  "name": "SmileHellingerKernel",
+  "package": "smile.math.kernel",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.math.kernel.AbstractSmileKernel<smile.math.kernel.HellingerKernel>",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ"
+}
