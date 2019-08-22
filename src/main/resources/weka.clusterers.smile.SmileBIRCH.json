@@ -1,0 +1,40 @@
+{
+  "name": "SmileBIRCH",
+  "package": "weka.clusterers.smile",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "weka.clusterers.smile.AbstractSmileClusterer",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "numClusters",
+      "type": "int",
+      "default": "2",
+      "constraint": "value >= 2",
+      "help": "The number of clusters to determine."
+    },
+    {
+      "property": "dimensionality",
+      "type": "int",
+      "default": "2",
+      "constraint": "value >= 1",
+      "help": "The dimensionality of the data."
+    },
+    {
+      "property": "branching",
+      "type": "int",
+      "default": "2",
+      "constraint": "value >= 1",
+      "help": "The branching factor, maximum number of children nodes.."
+    },
+    {
+      "property": "maxRadius",
+      "type": "double",
+      "constraint": "value > 0.0",
+      "default": "1.0",
+      "help": "the maximum radius of a sub-cluster."
+    }
+  ]
+}

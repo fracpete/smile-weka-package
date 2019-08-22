@@ -28,7 +28,8 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
 
 * Clustering
 
-  * [weka.clusterers.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
+  * [weka.clusterers.smile.SmileBIRCH](https://haifengl.github.io/smile/api/java/smile/clustering/BIRCH.html)
+  * [weka.clusterers.smile.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
 
 
 ## Releases

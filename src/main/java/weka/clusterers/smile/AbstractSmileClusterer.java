@@ -43,7 +43,7 @@ public abstract class AbstractSmileClusterer
   protected SmileDatasetHeader m_Header;
 
   /** the model. */
-  protected smile.clustering.Clustering<double[]> m_NumClusters;
+  protected smile.clustering.Clustering<double[]> m_Model;
 
   /**
    * Returns a description of the clusterer.
@@ -57,7 +57,7 @@ public abstract class AbstractSmileClusterer
    */
   protected void reset() {
     m_Header = null;
-    m_NumClusters = null;
+    m_Model = null;
   }
 
   /**
@@ -83,7 +83,7 @@ public abstract class AbstractSmileClusterer
     getCapabilities().testWithFail(data);
     dataset = SmileDatasetUtils.convertInstances(data);
     m_Header = new SmileDatasetHeader(dataset, data);
-    m_NumClusters = buildClusterer(dataset);
+    m_Model = buildClusterer(dataset);
   }
 
   /**
@@ -98,7 +98,7 @@ public abstract class AbstractSmileClusterer
     double[]	values;
 
     values = SmileDatasetUtils.convertInstance(instance, m_Header.getDataset());
-    return m_NumClusters.predict(values);
+    return m_Model.predict(values);
   }
 
   /**
@@ -110,8 +110,8 @@ public abstract class AbstractSmileClusterer
    */
   @Override
   public int numberOfClusters() throws Exception {
-    if (m_NumClusters instanceof PartitionClustering)
-      return ((PartitionClustering<double[]>) m_NumClusters).getNumClusters();
+    if (m_Model instanceof PartitionClustering)
+      return ((PartitionClustering<double[]>) m_Model).getNumClusters();
     else
       throw new IllegalStateException("Retrieval of number of clusters is not supported!");
   }
@@ -123,9 +123,9 @@ public abstract class AbstractSmileClusterer
    */
   @Override
   public String toString() {
-    if (m_NumClusters == null)
+    if (m_Model == null)
       return Utils.toCommandLine(this) + "\n" + "No model built yet!\n";
     else
-      return Utils.toCommandLine(this) + "\n" + m_NumClusters.getClass().getName() + "\n";
+      return Utils.toCommandLine(this) + "\n" + m_Model.getClass().getName() + "\n";
   }
 }

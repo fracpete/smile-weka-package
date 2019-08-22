@@ -344,6 +344,7 @@
             <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileRidgeRegression.json</argument>
             <argument>${project.basedir}/src/main/resources/weka.classifiers.smile.regression.SmileSVR.json</argument>
             <argument>${project.basedir}/src/main/resources/weka.clusterers.smile.SmileKMeans.json</argument>
+            <argument>${project.basedir}/src/main/resources/weka.clusterers.smile.SmileBIRCH.json</argument>
           </arguments>
         </configuration>
       </plugin>
