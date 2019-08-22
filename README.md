@@ -6,6 +6,7 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
 * Classification
 
   * [weka.classifiers.smile.classification.SmileRandomForest](https://haifengl.github.io/smile/api/java/smile/classification/RandomForest.html)
+  * [weka.classifiers.smile.classification.SmileSVM](https://haifengl.github.io/smile/api/java/smile/classification/SVM.html)
   
 * Regression
   
