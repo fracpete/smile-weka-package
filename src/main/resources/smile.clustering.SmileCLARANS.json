@@ -1,0 +1,39 @@
+{
+  "name": "SmileCLARANS",
+  "package": "smile.clustering",
+  "prefix": "",
+  "suffix": "Base",
+  "superclass": "smile.clustering.AbstractSmileClusterer",
+  "implement": [],
+  "author": "FracPete",
+  "organization": "University of Waikato, Hamilton, NZ",
+  "options": [
+    {
+      "property": "distance",
+      "type": "smile.math.distance.AbstractSmileDistance",
+      "default": "new smile.math.distance.SmileEuclideanDistance()",
+      "help": "The distance function to use."
+    },
+    {
+      "property": "numClusters",
+      "type": "int",
+      "default": "2",
+      "constraint": "value >= 2",
+      "help": "The number of clusters to determine."
+    },
+    {
+      "property": "maxNeighbor",
+      "type": "int",
+      "default": "-1",
+      "constraint": "value >= 1",
+      "help": "The maximum number of neighbors examined during a search of local minima; in case of -1, uses 0.02 * k * (n - k), where n is the number of data and k is the number clusters."
+    },
+    {
+      "property": "numLocalMinima",
+      "type": "int",
+      "default": "2",
+      "constraint": "value >= 1",
+      "help": "the number of local minima to search for."
+    }
+  ]
+}

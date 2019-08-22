@@ -345,6 +345,7 @@
             <argument>${project.basedir}/src/main/resources/smile.regression.SmileSVR.json</argument>
             <argument>${project.basedir}/src/main/resources/smile.clustering.SmileKMeans.json</argument>
             <argument>${project.basedir}/src/main/resources/smile.clustering.SmileBIRCH.json</argument>
+            <argument>${project.basedir}/src/main/resources/smile.clustering.SmileCLARANS.json</argument>
           </arguments>
         </configuration>
       </plugin>

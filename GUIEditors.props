@@ -10,3 +10,4 @@
 # author:  FracPete (fracpete at waikato dot ac dot nz)
 
 smile.math.kernel.AbstractSmileKernel=weka.gui.GenericObjectEditor
+smile.math.distance.AbstractSmileDistance=weka.gui.GenericObjectEditor

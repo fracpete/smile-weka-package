@@ -18,7 +18,7 @@
  * Copyright (C) 2019 University of Waikato, Hamilton, NZ
  */
 
-package smile.math.kernel;
+package smile.math.distance;
 
 import weka.core.Option;
 import weka.core.OptionHandler;
@@ -28,17 +28,17 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 /**
- * For instantiating a kernel.
+ * For instantiating a distance.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public abstract class AbstractSmileKernel<K extends MercerKernel>
+public abstract class AbstractSmileDistance<D extends Distance<double[]>>
   implements Serializable, OptionHandler {
 
   private static final long serialVersionUID = -7528449921136645926L;
 
   /**
-   * Returns a description of the kernel.
+   * Returns a description of the distance.
    *
    * @return the description
    */
@@ -75,9 +75,9 @@ public abstract class AbstractSmileKernel<K extends MercerKernel>
   }
 
   /**
-   * Returns a new instance of the kernel.
+   * Returns a new instance of the distance function.
    *
-   * @return		the kernel
+   * @return		the distance function
    */
-  public abstract K getKernel();
+  public abstract D getDistance();
 }

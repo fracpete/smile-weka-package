@@ -6,10 +6,14 @@ weka.classifiers.Classifier=\
  smile.classification,\
  smile.regression
 
+# the clusterers
+weka.clusterers.Clusterer=\
+  smile.clustering
+
 # the kernels
 smile.math.kernel.AbstractSmileKernel=\
  smile.math.kernel
 
-# the clusterers
-weka.clusterers.Clusterer=\
-  smile.clustering
+# the distance functions
+smile.math.distance.AbstractSmileDistance=\
+  smile.math.distance

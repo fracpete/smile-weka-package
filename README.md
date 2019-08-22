@@ -15,6 +15,12 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
   * [smile.regression.SmileRidgeRegression](https://haifengl.github.io/smile/api/java/smile/regression/RidgeRegression.html)
   * [smile.regression.SmileSVR](https://haifengl.github.io/smile/api/java/smile/regression/SVR.html)
 
+* Clustering
+
+  * [smile.clustering.SmileBIRCH](https://haifengl.github.io/smile/api/java/smile/clustering/BIRCH.html)
+  * [smile.clustering.SmileCLARANS](https://haifengl.github.io/smile/api/java/smile/clustering/CLARANS.html)
+  * [smile.clustering.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
+
 * Kernels
 
   * [smile.math.kernel.SmileGaussianKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/GaussianKernel.html)
@@ -26,10 +32,9 @@ Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
   * [smile.math.kernel.SmilePolynomialKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/PolynomialKernel.html)
   * [smile.math.kernel.SmileThinPlateSplineKernel](https://haifengl.github.io/smile/api/java/smile/math/kernel/ThinPlateSplineKernel.html)
 
-* Clustering
+* Distance functions
 
-  * [smile.clustering.SmileBIRCH](https://haifengl.github.io/smile/api/java/smile/clustering/BIRCH.html)
-  * [smile.clustering.SmileKMeans](https://haifengl.github.io/smile/api/java/smile/clustering/KMeans.html)
+  * [smile.math.distance.SmileEuclideanDistance](https://haifengl.github.io/smile/api/java/smile/math/distance/EuclideanDistance.html)
 
 
 ## Releases
