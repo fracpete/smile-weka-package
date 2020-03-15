@@ -1,5 +1,5 @@
 # smile-weka-package
-Weka package wrapping SMILE algorithms (https://haifengl.github.io/smile/).
+Weka package wrapping SMILE algorithms (http://haifengl.github.io/).
 
 ## Algorithms
 
